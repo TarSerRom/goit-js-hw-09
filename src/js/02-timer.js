@@ -44,7 +44,6 @@ const options = {
          
         }, 1000)
         
- 
     }
 };
 
@@ -64,7 +63,7 @@ function addLeadingZero(value) {
 }
 
 function convertMs(ms) {
-  // Number of milliseconds per unit of time
+  // Number of milliseconds per unit of tim
   const second = 1000;
   const minute = second * 60;
   const hour = minute * 60;
