@@ -8,6 +8,7 @@ const hoursCount = document.querySelector('[data-hours]');
 const minutesCount = document.querySelector('[data-minutes]');
 const secondsCount = document.querySelector('[data-seconds]');
 
+let timer = null;
 
 const options = {
   enableTime: true,
@@ -31,17 +32,20 @@ const options = {
       }
     },
     onStartClick() {
-        setInterval(() => {
+      timer = setInterval(() => {
+          startBtn.disabled = true;
         const callTime = Date.now();
         options.restDate = options.finalDate - callTime;
 
-            options.calcTime = convertMs(options.restDate);
-            console.log(options.restDate);
+        options.calcTime = convertMs(options.restDate);
 
-            updateClockFace(options.calcTime);
+        updateClockFace(options.calcTime);
         
-           startBtn.disabled = true;
-         
+        if (options.restDate <= 0) {
+          clearInterval(timer);
+          timerClear();
+          startBtn.disabled = true;
+        }       
         }, 1000)
         
     }
@@ -50,6 +54,13 @@ const options = {
 startBtn.addEventListener('click', options.onStartClick);
 
 flatpickr(inputField, options);
+
+function timerClear () {
+      daysCount.textContent = "00";
+      hoursCount.textContent = "00";
+      minutesCount.textContent = "00";
+      secondsCount.textContent = "00";
+}
 
 function updateClockFace(time) {
       daysCount.textContent = time.days;
