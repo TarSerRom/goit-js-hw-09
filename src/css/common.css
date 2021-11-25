@@ -18,6 +18,15 @@ img {
 }
 
 button {
-  background-color: green;
+  color: white;
+  font-family: inherit;
+  background-color: blue;
+  font-weight: 500;
   font-size: 16px;
+  line-height: 1.87;
+  cursor: pointer;
+  display: inline-block;
+  padding: 3px 22px;
+  border-radius: 4px;
+  border-color: white;
 }
